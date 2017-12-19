@@ -7,6 +7,8 @@ Super simple framework for Kakaotalk auto-reply bot based on aiohttp
 Example
 -------
 
+From `examples/simple_echo.py`:
+
 .. code:: python
 
     from kakaobot import KakaoBot
