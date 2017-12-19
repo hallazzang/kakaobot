@@ -4,6 +4,13 @@ kakaobot
 
 Super simple framework for Kakaotalk auto-reply bot based on aiohttp
 
+Installation
+------------
+
+.. code::
+
+    $ pip3 install --upgrade python-kakaobot
+
 Example
 -------
 
