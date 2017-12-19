@@ -43,17 +43,17 @@ class KakaoBot:
             resp = await self._get_result(self.handlers['message'],
                 req['content'], type=req['type'], user_key=req['user_key'])
             if isinstance(resp, str):  # Simple text response
-                return web.json_response({'text': resp})
+                return web.json_response({'message': {'text': resp}})
             elif isinstance(resp, Message):  # Complex message response
-                r = {'text': resp.text}
+                r = {'message': {'text': resp.text}}
                 if resp.photo:
-                    r['photo'] = {
+                    r['message']['photo'] = {
                         'url': resp.photo.url,
                         'width': resp.photo.width,
                         'height': resp.photo.height,
                     }
                 if resp.button:
-                    r['message_button'] = {
+                    r['message']['message_button'] = {
                         'label': resp.button.label,
                         'url': resp.button.url,
                     }
@@ -62,7 +62,7 @@ class KakaoBot:
                 raise TypeError('Invalid response')
         else:
             # Default response
-            return web.json_response({'text': 'Default response'})
+            return web.json_response({'message': {'text': 'Default response'}})
 
     def __getattr__(self, name):
         if name.startswith('on_'):
